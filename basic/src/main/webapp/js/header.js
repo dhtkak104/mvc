@@ -4,12 +4,12 @@ $(function() {
 	
 });
 
-function bbsDelete(bbsNo){
+function logout(){
 	var data = {};
 	
 	$.ajax({
-		url: '/bbs/'+bbsNo,
-		type: 'DELETE',
+		url: '/logout',
+		type: 'POST',
 		data: JSON.stringify(data),
 		dataType: 'json',
 		contentType: 'application/json',
@@ -17,14 +17,14 @@ function bbsDelete(bbsNo){
 			var code = xhr.status;
 			if(200 <= code && code < 300) 
 			{
-				if(code == 204 || data) {
+				if(data) {
 					$(location).attr('href', '/bbs');
 				} else {
-					alert("삭제실패");
+					alert("로그아웃 실패");
 				}
 			}
 			else {
-				alert("삭제실패");
+				alert("로그아웃 실패");
 			}
 		}
 	});

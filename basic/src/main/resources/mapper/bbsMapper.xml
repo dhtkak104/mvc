@@ -4,27 +4,12 @@
 
 <mapper namespace="mapper.bbsMapper">
 	
+	<select id="selectBbsList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	    SELECT * FROM bbs
+	</select>
+	
 	<select id="selectBbs" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-	    SELECT 
-   			bc.bbsCategoryNo
-   			, bc.bbsCategoryName
-	    	, bi.bbsNo
-	    	, bi.userId
-	    	, bi.bbsTitle
-	    	, bi.bbsContents
-	    	, bi.isRepresentaion
-	    	, bi.views
-	    	, DATE_FORMAT(bi.insertTs, '%Y-%m-%d %H:%i:%S') as insertTs
-	    	, DATE_FORMAT(bi.updateTs, '%Y-%m-%d %H:%i:%S') as updateTs
-	    FROM
-	    	bbsInfo bi
-	    LEFT JOIN
-	    	bbsCategory bc
-	    ON	bi.bbsCategoryNo= bc.bbsCategoryNo
-	    AND	bc.isDeleted = 'F'
-	    WHERE
-	    	bi.bbsNo = #{bbsNo}
-	    AND	bi.isDeleted = 'F'
+	    SELECT * FROM bbs WHERE bbsNo = #{bbsNo}
 	</select>
 	
 </mapper>

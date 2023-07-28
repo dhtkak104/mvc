@@ -15,13 +15,5 @@ import com.basic.service.BbsService;
 @RestController
 public class BbsDataController {
 
-	@Autowired
-	private BbsService bbsService;
 	
-	@GetMapping("bbs/{bbsNo}")
-	public ResponseEntity<?> selectBbs(@RequestParam Map<String, Object> param, @PathVariable Object bbsNo) {
-		param.put("bbsNo", bbsNo);
-		Map<String, Object> result = bbsService.selectBbs(param);
-		return new ResponseEntity<>(result, HttpStatus.valueOf(200));
-	}
 }

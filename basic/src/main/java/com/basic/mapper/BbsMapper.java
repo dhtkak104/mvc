@@ -1,5 +1,6 @@
 package com.basic.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -14,8 +15,12 @@ public class BbsMapper {
 	
 	private static String NAMESPACE = "mapper.bbsMapper.";
 	
+	public List<Map<String, Object>> selectBbsList(Map<String, Object> param) {
+		return sqlSession.selectList("mapper.bbsMapper.selectBbsList", param);
+	}
+
 	public Map<String, Object> selectBbs(Map<String, Object> param) {
-		return sqlSession.selectOne(NAMESPACE+"selectBbs", param);
+		return sqlSession.selectOne("mapper.bbsMapper.selectBbs", param);
 	}
 	
 }

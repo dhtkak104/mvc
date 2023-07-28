@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="path" value = "<%=request.getContextPath()%>"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,31 +18,6 @@
 <link href="${path}/css/bbsDetail.css" rel="stylesheet" type="text/css">  
 </head>
 <body>
-	<section class="bbs-view-area">
-		<h2 class="hidden">bbs-detail-area</h2>
-		<div class="container">
-			<h3>공지사항</h3>
-			<div class="view_head">
-				<p class="title">${bbs.bbsTitle}</p>
-				<ul class="clearfix">
-					<li>${bbs.userName}</li>
-					<li>${bbs.views}</li>
-				</ul>
-			</div>
-			<div class="view_cont">
-				<div class="bbsContents">
-					${bbs.bbsContents}
-				</div>
-			</div>
-			
-			<div class="view_bottom clearfix">
-				<div class="btn_list">
-					<a class="list_btn" href="/bbs">목록</a>
-					<a href="/bbs/${bbs.bbsNo}/update">수정</a>
-					<a onclick="bbsDelete(${bbs.bbsNo})">삭제</a>
-				</div>
-			</div>			
-		</div>
-	</section>
+	<h2>Hello World!</h2>
 </body>
 </html>
