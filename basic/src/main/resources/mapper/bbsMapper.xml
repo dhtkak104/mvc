@@ -12,4 +12,8 @@
 	    SELECT * FROM bbs WHERE bbsNo = #{bbsNo}
 	</select>
 	
+	<update id="updateBbs" parameterType="java.util.HashMap">
+	    UPDATE bbs SET views = views+1 WHERE bbsNo = #{bbsNo}
+	</update>
+	
 </mapper>

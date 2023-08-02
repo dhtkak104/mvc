@@ -12,8 +12,12 @@ public class BbsMapper {
 
 	@Autowired
     protected SqlSessionTemplate sqlSession;
-	
-	private static String NAMESPACE = "mapper.bbsMapper.";
+	/* SqlSessionTemplate 
+	 * C(CREATE) : sqlSession.insert(쿼리경로, 파리미터);
+	 * R(READ)	 : sqlSession.selectOne(쿼리경로, 파리미터); / sqlSession.selectList(쿼리경로, 파리미터); 
+	 * U(UPDATE) : sqlSession.update(쿼리경로, 파리미터);
+	 * D(DELETE) : sqlSession.delete(쿼리경로, 파리미터);
+	 */ 
 	
 	public List<Map<String, Object>> selectBbsList(Map<String, Object> param) {
 		return sqlSession.selectList("mapper.bbsMapper.selectBbsList", param);
@@ -21,6 +25,10 @@ public class BbsMapper {
 
 	public Map<String, Object> selectBbs(Map<String, Object> param) {
 		return sqlSession.selectOne("mapper.bbsMapper.selectBbs", param);
+	}
+	
+	public int updateBbs(Map<String, Object> param) {
+		return sqlSession.update("mapper.bbsMapper.updateBbs", param);
 	}
 	
 }
