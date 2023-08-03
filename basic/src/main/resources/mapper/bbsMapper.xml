@@ -6,6 +6,9 @@
 	
 	<select id="selectBbsList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 	    SELECT * FROM bbs
+	    <if test="keyword != null and keyword != ''">
+			WHERE bbsTitle LIKE CONCAT('%', #{keyword}, '%')
+	  	</if>
 	</select>
 	
 	<select id="selectBbs" parameterType="java.util.HashMap" resultType="java.util.HashMap">
