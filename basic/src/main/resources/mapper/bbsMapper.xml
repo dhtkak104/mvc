@@ -16,4 +16,8 @@
 	    UPDATE bbs SET views = views+1 WHERE bbsNo = #{bbsNo}
 	</update>
 	
+	<insert id="insertBbs" parameterType="java.util.HashMap">
+	    INSERT INTO bbs (bbsTitle, bbsContents, userName) VALUES (#{bbsTitle}, #{bbsContents}, #{userName})
+	</insert>
+	
 </mapper>

@@ -31,4 +31,7 @@ public class BbsMapper {
 		return sqlSession.update("mapper.bbsMapper.updateBbs", param);
 	}
 	
+	public int insertBbs(Map<String, Object> param) {
+		return sqlSession.insert("mapper.bbsMapper.insertBbs", param);
+	}
 }
