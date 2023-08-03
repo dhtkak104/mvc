@@ -28,6 +28,9 @@
 				<div class="view_head">
 					<input type="text" name="bbsTitle" placeholder="제목을 입력해주세요." maxlength="100">
 				</div>
+				<div class="view_mid">
+					<input type="text" name="userName" placeholder="이름을 입력해주세요." maxlength="100">
+				</div>
 				<div class="view_cont">
 					<textarea rows="15" cols="165" name="bbsContents" placeholder="내용을 입력해주세요.(2000자 이내)"></textarea>
 				</div>
