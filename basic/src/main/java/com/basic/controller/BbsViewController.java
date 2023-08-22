@@ -63,7 +63,7 @@ public class BbsViewController {
 		return mv;
 	}
 	
-	@GetMapping("bbs/insert")
+	@GetMapping("bbs/insert-view")
 	public ModelAndView selectBbsInsertView(@RequestParam Map<String, Object> param) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bbsInsert");

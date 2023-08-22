@@ -31,7 +31,7 @@
 		<div class="container">
 			<h3>게시판</h3>
 			<div class="option">
-				<a class="add_btn" href="/bbs/insert">추가</a>
+				<a class="add_btn" href="/bbs/insert-view">추가</a>
 				<form action="bbs" method="get">
 					<input type="text" name="keyword" placeholder="검색어를 입력해주세요." value="">
 					<input type="submit" value="검색">
