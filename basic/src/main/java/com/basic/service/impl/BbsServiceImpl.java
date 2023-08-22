@@ -22,8 +22,18 @@ public class BbsServiceImpl implements BbsService{
 	}
 	
 	public Map<String, Object> selectBbs(Map<String, Object> param) {
+		int cnt = bbsMapper.updateBbs(param);
 		Map<String, Object> bbs = bbsMapper.selectBbs(param);
 		return bbs;
+	}
+
+	@Override
+	public boolean insertBbs(Map<String, Object> param) {
+		int cnt = bbsMapper.insertBbs(param);
+		if(cnt > 0) {
+			return true;
+		}
+		return false;
 	}
 
 }

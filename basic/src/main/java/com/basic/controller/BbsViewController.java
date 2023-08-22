@@ -9,7 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -57,6 +60,25 @@ public class BbsViewController {
 		mv.setViewName("bbsDetail");
 		mv.setStatus(HttpStatus.valueOf(200));
 		mv.addObject("bbs", result);
+		return mv;
+	}
+	
+	@GetMapping("bbs/insert")
+	public ModelAndView selectBbsInsertView(@RequestParam Map<String, Object> param) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bbsInsert");
+		mv.setStatus(HttpStatus.valueOf(200));
+		return mv;
+	}
+
+	
+	@PostMapping("bbs/insert")
+	public ModelAndView insertBbs(@RequestBody Map<String, Object> param) {
+		boolean result = bbsService.insertBbs(param);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bbsInsert");
+		mv.setStatus(HttpStatus.valueOf(200));
+		mv.addObject("result", result);
 		return mv;
 	}
 }
