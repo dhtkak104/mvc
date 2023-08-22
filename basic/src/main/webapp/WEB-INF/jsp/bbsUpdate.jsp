@@ -12,36 +12,36 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-<script src="${path}/js/bbsDetail.js" type="text/javascript"></script>
+<script src="${path}/js/common/convertUtil.js" type="text/javascript"></script>  
+<script src="${path}/js/bbsUpdate.js" type="text/javascript"></script>
 <link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
 <link href="${path}/css/reset.css" rel="stylesheet" type="text/css">
 <link href="${path}/css/common.css" rel="stylesheet" type="text/css">
-<link href="${path}/css/bbsDetail.css" rel="stylesheet" type="text/css">  
+<link href="${path}/css/bbsUpdate.css" rel="stylesheet" type="text/css">  
 </head>
 <body>
 	<section class="bbs-view-area">
-		<h2 class="hidden">bbs-detail-area</h2>
+		<h2 class="hidden">bbs-update-area</h2>
 		<div class="container">
-			<h3>공지사항</h3>
-			<div class="view_head">
-				<p class="title">${bbs.bbsTitle}</p>
-				<ul class="clearfix">
-					<li>${bbs.userName}</li>
-					<li>${bbs.views}</li>
-				</ul>
-			</div>
-			<div class="view_cont">
-				<pre class="bbsContents">${bbs.bbsContents}</pre>
-			</div>
-			
-			<div class="view_bottom clearfix">
-				<div class="btn_list">
-					<a class="list_btn" href="/bbs">목록</a>
-					<a href="/bbs/update-view?bbsNo=${bbs.bbsNo}">수정</a>
-					<a onclick="bbsDelete(${bbs.bbsNo})">삭제</a>
+			<h3>공지사항 수정</h3>
+			<form id="saveForm">
+				<input type="hidden" name="bbsNo" value="${bbs.bbsNo}">
+				<div class="view_head">
+					<input type="text" name="bbsTitle" placeholder="제목을 입력해주세요." maxlength="100" value="${bbs.bbsTitle}">
 				</div>
-			</div>			
+				<div class="view_mid">
+					<input type="text" name="userName" placeholder="이름을 입력해주세요." maxlength="100" value="${bbs.userName}">
+				</div>
+				<div class="view_cont">
+					<textarea rows="15" cols="165" name="bbsContents" placeholder="내용을 입력해주세요.(2000자 이내)">${bbs.bbsContents}</textarea>
+				</div>
+				<div class="view_bottom clearfix">
+					<input type="submit" value="저장">
+					<a onclick="history.back()">취소</a>	
+				</div>	
+			</form>		
 		</div>
 	</section>
+
 </body>
 </html>
