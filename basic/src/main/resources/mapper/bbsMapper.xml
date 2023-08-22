@@ -9,6 +9,7 @@
 	    <if test="keyword != null and keyword != ''">
 			WHERE bbsTitle LIKE CONCAT('%', #{keyword}, '%')
 	  	</if>
+	  	ORDER BY bbsNo DESC
 	</select>
 	
 	<select id="selectBbs" parameterType="java.util.HashMap" resultType="java.util.HashMap">

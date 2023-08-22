@@ -6,6 +6,6 @@ $(function() {
 
 function selectBbsDetail(bbsNo){
 	//var url = '/bbs/'+bbsNo;
-	var url = '/bbs-view?bbsNo=1';
+	var url = '/bbs-view?bbsNo='+bbsNo;
 	$(location).attr('href',url);
 }

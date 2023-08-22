@@ -31,9 +31,7 @@
 				</ul>
 			</div>
 			<div class="view_cont">
-				<div class="bbsContents">
-					${bbs.bbsContents}
-				</div>
+				<pre class="bbsContents">${bbs.bbsContents}</pre>
 			</div>
 			
 			<div class="view_bottom clearfix">
