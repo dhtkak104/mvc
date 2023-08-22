@@ -71,14 +71,10 @@ public class BbsViewController {
 		return mv;
 	}
 
-	
+	@ResponseBody
 	@PostMapping("bbs/insert")
-	public ModelAndView insertBbs(@RequestBody Map<String, Object> param) {
+	public boolean insertBbs(@RequestBody Map<String, Object> param) {
 		boolean result = bbsService.insertBbs(param);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("bbsInsert");
-		mv.setStatus(HttpStatus.valueOf(200));
-		mv.addObject("result", result);
-		return mv;
+		return result;
 	}
 }
