@@ -27,8 +27,8 @@ public class BbsMapper {
 		return sqlSession.selectOne("mapper.bbsMapper.selectBbs", param);
 	}
 	
-	public int updateBbs(Map<String, Object> param) {
-		return sqlSession.update("mapper.bbsMapper.updateBbs", param);
+	public int updateBbsView(Map<String, Object> param) {
+		return sqlSession.update("mapper.bbsMapper.updateBbsView", param);
 	}
 	
 	public int insertBbs(Map<String, Object> param) {

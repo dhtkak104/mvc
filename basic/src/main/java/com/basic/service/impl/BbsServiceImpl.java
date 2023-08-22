@@ -21,8 +21,9 @@ public class BbsServiceImpl implements BbsService{
 		return bbsList;
 	}
 	
+	@Override
 	public Map<String, Object> selectBbs(Map<String, Object> param) {
-		int cnt = bbsMapper.updateBbs(param);
+		int cnt = bbsMapper.updateBbsView(param);
 		Map<String, Object> bbs = bbsMapper.selectBbs(param);
 		return bbs;
 	}
@@ -35,5 +36,4 @@ public class BbsServiceImpl implements BbsService{
 		}
 		return false;
 	}
-
 }
