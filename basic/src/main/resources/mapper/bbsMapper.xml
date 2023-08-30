@@ -23,4 +23,19 @@
 	<insert id="insertBbs" parameterType="java.util.HashMap">
 	    INSERT INTO bbs (bbsTitle, bbsContents, userName) VALUES (#{bbsTitle}, #{bbsContents}, #{userName})
 	</insert>
+	
+	<update id="updateBbs" parameterType="java.util.HashMap">
+	    UPDATE 
+	    	bbs 
+	    SET 
+	    	bbsTitle = #{bbsTitle}
+	    	, bbsContents = #{bbsContents} 
+	    	, userName = #{userName}
+	    WHERE 
+	    	bbsNo = #{bbsNo}
+	</update>
+	
+	<delete id="deleteBbs" parameterType="java.util.HashMap">
+	    DELETE FROM bbs WHERE bbsNo = #{bbsNo}
+	</delete>
 </mapper>

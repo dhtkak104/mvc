@@ -36,4 +36,23 @@ public class BbsServiceImpl implements BbsService{
 		}
 		return false;
 	}
+
+	@Override
+	public boolean updateBbs(Map<String, Object> param) {
+		int cnt = bbsMapper.updateBbs(param);
+		if(cnt > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteBbs(Map<String, Object> param) {
+		int cnt = bbsMapper.deleteBbs(param);
+		if(cnt > 0) {
+			return true;
+		}
+		return false;
+	}
+
 }

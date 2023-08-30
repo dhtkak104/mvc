@@ -34,4 +34,12 @@ public class BbsMapper {
 	public int insertBbs(Map<String, Object> param) {
 		return sqlSession.insert("mapper.bbsMapper.insertBbs", param);
 	}
+	
+	public int updateBbs(Map<String, Object> param) {
+		return sqlSession.update("mapper.bbsMapper.updateBbs", param);
+	}
+	
+	public int deleteBbs(Map<String, Object> param) {
+		return sqlSession.delete("mapper.bbsMapper.deleteBbs", param);
+	}
 }

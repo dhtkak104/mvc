@@ -5,10 +5,10 @@ $(function() {
 });
 
 function bbsDelete(bbsNo){
-	var data = {};
+	var data = {bbsNo:bbsNo};
 	
 	$.ajax({
-		url: '/bbs/'+bbsNo,
+		url: '/bbs/delete',
 		type: 'DELETE',
 		data: JSON.stringify(data),
 		dataType: 'json',

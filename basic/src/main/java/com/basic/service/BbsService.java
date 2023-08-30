@@ -10,4 +10,8 @@ public interface BbsService {
 	public Map<String, Object> selectBbs(Map<String, Object> param);
 	
 	public boolean insertBbs(Map<String, Object> param);
+	
+	public boolean updateBbs(Map<String, Object> param);
+	
+	public boolean deleteBbs(Map<String, Object> param);
 }

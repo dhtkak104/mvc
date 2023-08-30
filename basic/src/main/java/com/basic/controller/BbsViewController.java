@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -75,6 +77,30 @@ public class BbsViewController {
 	@PostMapping("bbs/insert")
 	public boolean insertBbs(@RequestBody Map<String, Object> param) {
 		boolean result = bbsService.insertBbs(param);
+		return result;
+	}
+	
+	@GetMapping("bbs/update-view")
+	public ModelAndView selectBbsUpdateView(@RequestParam Map<String, Object> param) {
+		Map<String, Object> result = bbsService.selectBbs(param);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bbsUpdate");
+		mv.setStatus(HttpStatus.valueOf(200));
+		mv.addObject("bbs", result);
+		return mv;
+	}
+	
+	@ResponseBody
+	@PutMapping("bbs/update")
+	public boolean updateBbs(@RequestBody Map<String, Object> param) {
+		boolean result = bbsService.updateBbs(param);
+		return result;
+	}
+	
+	@ResponseBody
+	@DeleteMapping("bbs/delete")
+	public boolean deleteBbs(@RequestBody Map<String, Object> param) {
+		boolean result = bbsService.deleteBbs(param);
 		return result;
 	}
 }
