@@ -27,14 +27,14 @@
 			<li><a href="/bbs">게시판</a></li>
 			<li><a href="/bbs">게시판</a></li>
 			<c:choose>		
-			    <c:when test="${not empty sessionScope.loginUser.userName}">
+			    <c:when test="${not empty sessionScope.user.userName}">
 				    <ul class="headerDrop">
 				    	<li class="headerLI">
-				        	<a><span>${sessionScope.loginUser.userName}</span>님</a>
+				        	<a><span>${sessionScope.user.userName}</span>님</a>
 				        	<div class="profile">
 				        		<c:choose>	
-					        		<c:when test="${not empty sessionScope.loginUser.profilePath}">
-					        			<img class="profile" src="${sessionScope.loginUser.profilePath}">
+					        		<c:when test="${not empty sessionScope.user.profilePath}">
+					        			<img class="profile" src="${sessionScope.user.profilePath}">
 					        		</c:when>
 					        		<c:otherwise>
 										<img class="profile" src="/img/defaultProfile.jpg">
@@ -50,7 +50,7 @@
 					</ul>
 			    </c:when>
 			    <c:otherwise>		    
-					<li><a href="/bbs">회원가입 및 로그인</a></li>				
+					<li><a href="/login-view">회원가입 및 로그인</a></li>				
 			    </c:otherwise>	
 			</c:choose>		
 		</ul>			

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.userMapper">
+	
+	<select id="selectUser" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	    SELECT 
+	    	userNo
+	    	, email
+	    	, userName 
+	    FROM 
+	    	user 
+	    WHERE 
+	    	email = #{email}
+    	<if test="password != null and password != ''">
+	    	AND password = #{password}
+	    </if>
+	</select>
+	
+	<insert id="insertUser" parameterType="java.util.HashMap">
+	    INSERT INTO user (email, password, userName) VALUES (#{email}, #{password}, #{userName})
+	</insert>
+		
+</mapper>

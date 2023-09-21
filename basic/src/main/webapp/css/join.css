@@ -1,0 +1,31 @@
+
+@charset "UTF-8";
+
+.join-area {width:100%; text-align: center; padding-top:6.3%;}
+.join_header{
+	padding-top: 5%;
+    margin-bottom: 3.3%;
+    font-size: 34px;}
+.join_header span{font-weight: 600;}
+.join_body {margin: 3.3% auto 0;width: 34.1%;}
+
+form #userId{margin-top: 30px;}
+#joinForm input{
+	width: 100%;
+    padding: 4.85%;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 15px;
+    background: transparent; 
+}
+#joinForm input[type=submit]{
+	width: 100%;
+    margin-top: 3.3%;
+    padding: 4.9% 0 4.6%;
+    font-size: 18px;
+    background: linear-gradient(to right, #ff1069 0%, #ff493d 100%);
+    color: #fff;
+    text-align: center;
+}    
+.container {height: 633px;}

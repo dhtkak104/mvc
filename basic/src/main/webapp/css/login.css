@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+/* 로그인 입력 */
+.login-area {width:100%; text-align: center; padding-top:9.5%;}
+.login_header{padding-top: 5%; margin-bottom: 3.3%; font-size: 34px;}
+.login_body{margin:0 auto; width:410px;}
+
+form{width:100%;}
+form input{
+	width:100%; padding:20px; border:1px solid #ccc; margin-bottom:13px;
+	color:#666; font-size:15px; background:transparent; 
+}
+form input[type=submit]{
+	width:100%; margin-top:13px; padding:20px 0 19px; font-size:18px;
+	background:linear-gradient(to right, #ff1069 0%, #ff493d 100%);
+	color:#fff; text-align:center;
+}
+
+form.nonMemberForm input{
+   width:100%; padding:20px; border:1px solid #ccc; margin-bottom:13px;
+   color:#666; font-size:15px; background:transparent; 
+}
+form.nonMemberForm input[type=submit]{
+   width:100%; margin-top:13px; padding:20px 0 19px; font-size:18px;
+   background:linear-gradient(to right, #ff1069 0%, #ff493d 100%);
+   color:#fff; text-align:center;
+}
+
+
+form input[type=button]{
+	width:100%; margin-top:13px; padding:20px 0 19px; font-size:18px;
+	background:linear-gradient(to right, #ff1069 0%, #ff493d 100%);
+	color:#fff; text-align:center; margin-bottom: 52%;
+}
+
+form button{
+	width: 9%;
+    margin-top: 13px;
+    padding: 11px 0 11px;
+    font-size: 16px;
+    background: linear-gradient(to right, #ff1069 0%, #ff493d 100%);
+    color: #fff;
+    text-align: center;
+}
+
+
+form .login_option{width:100%; margin-top:10px;}
+form .login_link_text{float:right; font-weight:350;}
+form .login_link_join{padding-left:15px; font-weight:350;}
+
+
+.container {height: 541px;}
+	
