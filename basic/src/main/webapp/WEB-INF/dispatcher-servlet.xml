@@ -30,6 +30,21 @@
 		<property name="defaultEncoding" value="utf-8" /> 
 	</bean>
 	
+	<!-- interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/bbs/**"/>
+			<mvc:exclude-mapping path="/bbs"/>
+			<mvc:exclude-mapping path="/bbs-view"/>
+			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/login-view"/>
+			<mvc:exclude-mapping path="/logout"/>
+			<mvc:exclude-mapping path="/join"/>
+			<mvc:exclude-mapping path="/join-view"/>
+			<bean id="interceptor" class="com.basic.interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	<!-- resources access -->
 	<mvc:resources location="/uploads/" mapping="/uploads/**"></mvc:resources>
 	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
