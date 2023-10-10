@@ -22,6 +22,16 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
+	public void isKeepLogin(Map<String, Object> param) {
+		if((boolean)param.get("isKeepLogin")) {
+			userMapper.updatetUser(param);
+		} else {
+			userMapper.updateUserSessionInit(param);
+		}
+		
+	}
+	
+	@Override
 	public boolean joinUser(Map<String, Object> param) {
 		Map<String, Object> inParam = new HashMap<>();
 		inParam.put("email", param.get("email"));
@@ -36,4 +46,5 @@ public class UserServiceImpl implements UserService{
 		}
 		return false;
 	}
+	
 }

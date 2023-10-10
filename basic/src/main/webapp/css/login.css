@@ -45,6 +45,10 @@ form button{
 
 
 form .login_option{width:100%; margin-top:10px;}
+form .auto_login{text-align: left; float:left;}
+form .auto_login #ch01{width:auto; border-color:#ff2d60; vertical-align:middle; margin:0;}
+form .auto_login #ch01:checked{border-color:#ff2d60;}
+form .auto_login label{vertical-align:middle; font-weight:300;}
 form .login_link_text{float:right; font-weight:350;}
 form .login_link_join{padding-left:15px; font-weight:350;}
 

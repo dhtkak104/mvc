@@ -6,5 +6,8 @@ public interface UserService {
 
 	public Map<String, Object> loginUser(Map<String, Object> param);
 	
+	public void isKeepLogin(Map<String, Object> param);
+	
 	public boolean joinUser(Map<String, Object> param);
+	
 }

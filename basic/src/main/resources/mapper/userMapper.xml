@@ -18,8 +18,43 @@
 	    </if>
 	</select>
 	
+	<select id="selectUserBySessionId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	    SELECT 
+	    	* 
+	    FROM 
+	    	user 
+	    WHERE 
+	    	sessionId = #{sessionId}
+	</select>
+	
 	<insert id="insertUser" parameterType="java.util.HashMap">
 	    INSERT INTO user (email, password, userName) VALUES (#{email}, #{password}, #{userName})
 	</insert>
+	
+	<update id="updatetUser" parameterType="java.util.HashMap">
+	    UPDATE 
+	    	user 
+	    SET
+	    	updatedAt = NOW()
+	    	<if test="sessionId != null and sessionId != ''">
+	    		, sessionId = #{sessionId} 
+	    	</if>
+	    	<if test="expiredAt != null and expiredAt != ''">
+	    		, expiredAt = #{expiredAt} 
+	    	</if> 
+	    WHERE 
+	    	email = #{email}
+	</update>
+	
+	<update id="updateUserSessionInit" parameterType="java.util.HashMap">
+	    UPDATE 
+	    	user 
+	    SET
+	    	updatedAt = NOW()
+    		, sessionId = NULL 
+    		, expiredAt = NULL 
+	    WHERE 
+	    	email = #{email}
+	</update>
 		
 </mapper>

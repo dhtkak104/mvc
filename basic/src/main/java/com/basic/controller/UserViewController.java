@@ -1,8 +1,12 @@
 package com.basic.controller;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 import com.basic.service.UserService;
 
@@ -42,23 +47,53 @@ public class UserViewController {
 	
 	@ResponseBody
 	@PostMapping("login")
-	public boolean loginUser(@RequestBody Map<String, Object> param, HttpServletRequest request) {
+	public boolean loginUser(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> user = userService.loginUser(param);
+		if (user == null) return false;
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
 		
-		boolean result = false;
-		if(user != null) {
-			result = true;
+		if((boolean) param.get("autoLogin")) {
+			String sessionId = session.getId();
+			int expiry = 60*60*24*7;
+			Date expiredAt = new Date(System.currentTimeMillis()+(expiry*1000));
+			
+			Map<String, Object> inParam = new HashMap<>();
+	    	inParam.put("isKeepLogin", true);
+	    	inParam.put("sessionId", sessionId);
+	    	inParam.put("expiredAt", expiredAt);
+	    	inParam.put("email", user.get("email"));
+	    	userService.isKeepLogin(inParam);
+			
+			Cookie loginCookie = new Cookie("loginCookie", sessionId);
+	    	loginCookie.setPath("/");
+	    	loginCookie.setMaxAge(expiry); //7일
+	    	response.addCookie(loginCookie);
 		}
-		return result;
+		return true;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@PostMapping("logout")
-	public boolean loginoutUser(@RequestBody Map<String, Object> param, HttpServletRequest request) {
-		HttpSession session = request.getSession();  
+	public boolean loginoutUser(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		Map<String, Object> user = (Map<String, Object>) session.getAttribute("user");
+		session.removeAttribute("user");
 		session.invalidate();
+		
+		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+		if(loginCookie != null) 
+		{
+			Map<String, Object> inParam = new HashMap<>();
+	    	inParam.put("isKeepLogin", false);
+	    	inParam.put("email", user.get("email"));
+	    	userService.isKeepLogin(inParam);
+	    	
+			loginCookie.setMaxAge(0);
+            response.addCookie(loginCookie);
+		}
 		return true;
 	}
 	

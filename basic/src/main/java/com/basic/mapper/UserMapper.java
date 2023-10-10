@@ -16,7 +16,19 @@ public class UserMapper {
 		return sqlSession.selectOne("mapper.userMapper.selectUser", param);
 	}
 	
+	public Map<String, Object> selectUserBySessionId(Map<String, Object> param) {
+		return sqlSession.selectOne("mapper.userMapper.selectUserBySessionId", param);
+	}
+	
 	public int insertUser(Map<String, Object> param) {
 		return sqlSession.insert("mapper.userMapper.insertUser", param);
+	}
+	
+	public int updatetUser(Map<String, Object> param) {
+		return sqlSession.update("mapper.userMapper.updatetUser", param);
+	}
+	
+	public int updateUserSessionInit(Map<String, Object> param) {
+		return sqlSession.update("mapper.userMapper.updateUserSessionInit", param);
 	}
 }

@@ -32,6 +32,9 @@
 					<input type="submit" value="로그인">
 						
 					<div class="login_option">
+						<div class="auto_login">
+							<input type="checkbox" id="ch01" name="auto" value="on" checked="checked"> <label for="ch01">자동 로그인</label>
+						</div>
 						<div class="login_link_text">
 							<a href="pwFind" class="login_link_pw">비밀번호 찾기</a> 
 							<a href="join-view" class="login_link_join">회원가입</a>

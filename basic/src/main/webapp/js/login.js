@@ -10,9 +10,15 @@ $(function() {
 			}
 		}
 				
+		var autoLogin = false;
+		if(formData.get('auto') === 'on') {
+			autoLogin = true;
+		}
+				
 		var data = {
             email: formData.get('email'),
-            password: formData.get('password')
+            password: formData.get('password'),
+            autoLogin
         };
 
 		$.ajax({
