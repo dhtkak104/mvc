@@ -6,7 +6,6 @@ $(function() {
 
 function bbsDelete(bbsNo){
 	var data = {bbsNo:bbsNo};
-	
 	$.ajax({
 		url: '/bbs/delete',
 		type: 'DELETE',

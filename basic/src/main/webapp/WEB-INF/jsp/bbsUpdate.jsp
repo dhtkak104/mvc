@@ -11,8 +11,7 @@
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script src="${path}/js/common/convertUtil.js" type="text/javascript"></script>  
+  crossorigin="anonymous"></script>  
 <script src="${path}/js/bbsUpdate.js" type="text/javascript"></script>
 <link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
 <link href="${path}/css/reset.css" rel="stylesheet" type="text/css">
