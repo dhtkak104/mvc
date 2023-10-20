@@ -20,7 +20,9 @@
 	
 	<select id="selectUserBySessionId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 	    SELECT 
-	    	* 
+	    	userNo
+	    	, email
+	    	, userName
 	    FROM 
 	    	user 
 	    WHERE 

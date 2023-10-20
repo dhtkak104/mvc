@@ -2,6 +2,9 @@ package com.basic.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -70,9 +73,13 @@ public class BbsViewController {
 		return mv;
 	}
 
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@PostMapping("bbs/insert")
-	public boolean insertBbs(@RequestBody Map<String, Object> param) {
+	public boolean insertBbs(@RequestBody Map<String, Object> param, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Map<String, Object> user = (Map<String, Object>) session.getAttribute("user");
+		param.put("email", user.get("email"));
 		boolean result = bbsService.insertBbs(param);
 		return result;
 	}

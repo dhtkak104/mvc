@@ -13,7 +13,6 @@ $(function() {
 		
 		var data = {
             bbsTitle: formData.get('bbsTitle'),
-            userName: formData.get('userName'),
             bbsContents: formData.get('bbsContents')
         };
 		

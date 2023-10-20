@@ -26,6 +26,7 @@
 			<div class="view_head">
 				<p class="title">${bbs.bbsTitle}</p>
 				<ul class="clearfix">
+					<li>${bbs.email}</li>
 					<li>${bbs.userName}</li>
 					<li>${bbs.views}</li>
 				</ul>

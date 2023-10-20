@@ -38,7 +38,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			Map<String, Object> param = new HashMap<>();
 			param.put("sessionId", sessionId);
 			Map<String, Object> user = userMapper.selectUserBySessionId(param);
-			if(user != null) return true;
+			if(user != null) {
+				session.setAttribute("user", user);
+				return true;
+			}
 		}
 		
 		String contextPath = request.getContextPath();

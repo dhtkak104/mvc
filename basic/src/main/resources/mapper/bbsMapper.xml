@@ -5,17 +5,20 @@
 <mapper namespace="mapper.bbsMapper">
 	
 	<select id="selectBbsList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-	    SELECT
-	    	* 
+    	SELECT
+	    	b.*
+	    	, u.userName 
 	    FROM 
-	    	bbs
+	    	bbs b
+	    LEFT JOIN
+	    	user u
+	    ON	b.email = u.email
 	    <if test="keyword != null and keyword != ''">
-			WHERE bbsTitle LIKE CONCAT('%', #{keyword}, '%')
+			WHERE b.bbsTitle LIKE CONCAT('%', #{keyword}, '%')
 	  	</if>
 	  	ORDER BY bbsNo DESC
 	  	LIMIT 10
 	  	OFFSET #{offset}
-	  	
 	  	<!-- 
 	    	[Oracle]
 	    	SELECT
@@ -53,7 +56,16 @@
 	</select>
 	
 	<select id="selectBbs" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-	    SELECT * FROM bbs WHERE bbsNo = #{bbsNo}
+	    SELECT 
+	    	b.*
+	    	, u.userName
+	    FROM 
+	    	bbs b
+	    LEFT JOIN
+	    	user u
+	    ON	b.email = u.email
+	    WHERE 
+	    	b.bbsNo = #{bbsNo}
 	</select>
 	
 	<update id="updateBbsView" parameterType="java.util.HashMap">
@@ -61,7 +73,17 @@
 	</update>
 	
 	<insert id="insertBbs" parameterType="java.util.HashMap">
-	    INSERT INTO bbs (bbsTitle, bbsContents, userName) VALUES (#{bbsTitle}, #{bbsContents}, #{userName})
+	    INSERT INTO bbs 
+	    (
+	    	bbsTitle
+	    	, bbsContents
+	    	, email
+	    )
+	    VALUES (
+	    	#{bbsTitle}
+	    	, #{bbsContents}
+	    	, #{email}
+	    )
 	</insert>
 	
 	<update id="updateBbs" parameterType="java.util.HashMap">
