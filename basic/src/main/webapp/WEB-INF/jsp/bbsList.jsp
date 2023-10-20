@@ -50,7 +50,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${bbs}" var="item">
+					<c:forEach items="${bbs.bbsList}" var="item">
 						<tr onClick="selectBbsDetail(${item.bbsNo})">
 							<td class="leftAlign">${item.bbsTitle}</td>
 							<td class="leftAlign">${item.userName}</td>
@@ -58,6 +58,71 @@
 					</c:forEach>								
 				</tbody>
 			</table>
+			<%-- page navigation bar pack of 5 --%>
+			<div class="page">
+				<%-- 
+					[처음] : 제일 첫 페이지
+					[이전] : 이전 startPage (startPage 1,6,11,16...)					 
+				--%>	
+				<c:if test="${bbs.startPage!=1}">
+					<a href="bbs?currentPage=1
+						<c:if test="${bbs.keyword!=null}">						
+							&keyword=${bbs.keyword}							
+						</c:if>
+					">[처음]</a>
+					<a href="bbs?currentPage=${bbs.startPage-1}&keyword=${bbs.keyword}">[이전]</a>
+				</c:if> 
+				<%-- 
+					startPage ~ (endPage or pageTotalCnt) For문 돌며 페이징 네비바의 페이지 번호 표현 	
+					
+					cf. bbs.endPage < bbs.pageTotalCnt ? bbs.endPage : bbs.pageTotalCnt 조건설명
+						페이징 네비바의 마지막 페이징은 pageTotalCnt 사용, 나머지 페이징은 endPage 사용하기 위함
+						
+						ex) 게시글 101개, 페이지당 10개씩 게시물 노출, 페이징 5개씩 표현 
+					 		currentPage  : 10	11	
+					 		endPage 	 : 10	15	
+					  		pageTotalCnt : 11	11  
+				--%>
+				<c:forEach var="pageNo" begin="${bbs.startPage}" end="${bbs.endPage < bbs.pageTotalCnt ? bbs.endPage : bbs.pageTotalCnt}">
+					<c:choose>
+						<c:when test="${pageNo == bbs.currentPage}">
+							<b class="currentPage">${pageNo}</b>
+						</c:when>
+						<c:otherwise>
+							<a class="remainPage" href="bbs?currentPage=${pageNo}
+								<c:if test="${bbs.keyword!=null}">						
+									&keyword=${bbs.keyword}							
+								</c:if>
+							">${pageNo}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach> 
+				<%-- 
+					[다음] : 다음 endPage (endPage 5,10,15,20...)
+					[마지막] : 제일 마지막 페이지 					 
+					
+					cf. bbs.endPage < bbs.pageTotalCnt 조건설명
+						endPage : 현재페이지 페이징 네비바의 가장 마지막 페이지 번호 
+						pageTotalCnt : 게시글 표현할 수 있는 실제 총 페이지 번호
+					 	
+					 	ex) 게시글 101개, 페이지당 10개씩 게시물 노출, 페이징 5개씩 표현 
+					 		currentPage  : 10	11	
+					 		endPage 	 : 10	15	
+					  		pageTotalCnt : 11	11 					
+				--%>
+				<c:if test="${bbs.endPage < bbs.pageTotalCnt}">
+					<a href="bbs?currentPage=${bbs.endPage+1}
+						<c:if test="${bbs.keyword!=null}">						
+							&keyword=${bbs.keyword}							
+						</c:if>
+					">[다음]</a>
+					<a href="bbs?currentPage=${bbs.pageTotalCnt}
+						<c:if test="${bbs.keyword!=null}">						
+							&keyword=${bbs.kewword}							
+						</c:if>
+					">[마지막]</a>
+				</c:if>
+			</div>
 		</div>
 	</section>
 </body>

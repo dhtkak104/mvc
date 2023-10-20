@@ -23,6 +23,10 @@ public class BbsMapper {
 		return sqlSession.selectList("mapper.bbsMapper.selectBbsList", param);
 	}
 
+	public long selectBbsListCnt(Map<String, Object> param) {
+		return sqlSession.selectOne("mapper.bbsMapper.selectBbsListCnt", param);
+	}
+	
 	public Map<String, Object> selectBbs(Map<String, Object> param) {
 		return sqlSession.selectOne("mapper.bbsMapper.selectBbs", param);
 	}

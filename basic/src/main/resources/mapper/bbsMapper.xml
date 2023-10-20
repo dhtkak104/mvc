@@ -5,11 +5,51 @@
 <mapper namespace="mapper.bbsMapper">
 	
 	<select id="selectBbsList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-	    SELECT * FROM bbs
+	    SELECT
+	    	* 
+	    FROM 
+	    	bbs
 	    <if test="keyword != null and keyword != ''">
 			WHERE bbsTitle LIKE CONCAT('%', #{keyword}, '%')
 	  	</if>
 	  	ORDER BY bbsNo DESC
+	  	LIMIT 10
+	  	OFFSET #{offset}
+	  	
+	  	<!-- 
+	    	[Oracle]
+	    	SELECT
+	    		b.*
+	    	FROM (
+					SELECT 
+			    		ROWNUM
+			    		, b.*
+			    	FROM (
+				    		SELECT 
+				    			* 
+				    		FROM 
+				    			bbs
+						    <if test="keyword != null and keyword != ''">
+								WHERE bbsTitle LIKE CONCAT('%', #{keyword}, '%')
+						  	</if>
+						  	ORDER BY 
+						  		bbsNo DESC
+			    		) b	    	
+	    		) b
+	    	WHEREH
+	    		b.ROWNUM 
+    		BETWEEN #{start} AND #{end} 
+   		-->
+	</select>
+	
+	<select id="selectBbsListCnt" parameterType="java.util.HashMap" resultType="long">
+	    SELECT 
+	    	COUNT(1)
+	    FROM 
+	    	bbs
+	    <if test="keyword != null and keyword != ''">
+			WHERE bbsTitle LIKE CONCAT('%', #{keyword}, '%')
+	  	</if>
 	</select>
 	
 	<select id="selectBbs" parameterType="java.util.HashMap" resultType="java.util.HashMap">
